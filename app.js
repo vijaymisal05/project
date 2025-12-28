@@ -92,8 +92,13 @@ app.use("/", userRouter);
 app.use("/", searchRoutes); 
 
 
-app.all(/.*/, (req, res, next) => {
-     next(new ExpressError(404, "Page Not Found!"));
+// app.all(/.*/, (req, res, next) => {
+//      next(new ExpressError(404, "Page Not Found!"));
+// });
+
+const path = require('path');
+app.all('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
 app.use((err, req, res, next) => {
