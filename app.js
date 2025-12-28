@@ -98,7 +98,7 @@ app.use("/", searchRoutes);
 
 const path = require('path');
 app.all('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html')); 
+  res.sendFile(path.join(__dirname, 'public', 'index.ejs')); 
 });
 
 app.use((err, req, res, next) => {
