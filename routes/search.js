@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Listing = require("../models/Listing");
+const Listing = require("../models/listing.js");
 
 // GET /search?q=delhi
 router.get("/search", async (req, res) => {
