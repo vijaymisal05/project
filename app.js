@@ -96,7 +96,6 @@ app.use("/", searchRoutes);
 //      next(new ExpressError(404, "Page Not Found!"));
 // });
 
-const path = require('path');
 app.all('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.ejs')); 
 });
