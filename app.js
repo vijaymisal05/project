@@ -92,17 +92,12 @@ app.use("/", userRouter);
 app.use("/", searchRoutes); 
 
 
-// app.all(/.*/, (req, res, next) => {
-//      next(new ExpressError(404, "Page Not Found!"));
-// });
+app.all(/.*/, (req, res, next) => {
+     next(new ExpressError(404, "Page Not Found!"));
+});
 
 app.get('/:path*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "something went wrong!" } = err;
-  res.status(statusCode).render("error.ejs", { message });
 });
 
 app.use((err, req, res, next) => {
