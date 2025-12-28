@@ -96,7 +96,7 @@ app.use("/", searchRoutes);
 //      next(new ExpressError(404, "Page Not Found!"));
 // });
 
-app.get('(.)', (req, res) => {
+app.get('/:path*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
