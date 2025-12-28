@@ -96,8 +96,14 @@ app.use("/", searchRoutes);
 //      next(new ExpressError(404, "Page Not Found!"));
 // });
 
-app.get(/.*/, (req, res) => {
+app.get('*', (req, res) => {});
+app.get('/:path*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "something went wrong!" } = err;
+  res.status(statusCode).render("error.ejs", { message });
 });
 
 app.use((err, req, res, next) => {
