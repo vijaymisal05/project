@@ -103,7 +103,8 @@ app.use((req, res, next) => {
 // ERROR HANDLER
 
 app.use((err, req, res, next) => {
-  res.status(500).render("error", { err });
+  const message = err.message || "Something went wrong";
+  res.status(500).render("error", { message });
 });
 
 // SERVER (RENDER SAFE)
