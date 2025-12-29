@@ -103,9 +103,10 @@ app.use((req, res, next) => {
 // ERROR HANDLER
 
 app.use((err, req, res, next) => {
-  const message = err.message || "Something went wrong";
-  res.status(500).render("error", { message });
+  const { statusCode = 500, message = "Something went wrong!" } = err;
+  return res.status(statusCode).render("error.ejs", { message });
 });
+
 
 // SERVER (RENDER SAFE)
 
