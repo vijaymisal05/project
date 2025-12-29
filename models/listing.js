@@ -32,5 +32,5 @@ listingSchema.post("findOneAndDelete", async(Listing) => {
     await Review.deleteMany({_id : {$in: Listing.reviews}});
   }
 });
-module.exports =
-  mongoose.models.Listing || mongoose.model("Listing", listingSchema);
+const Listing = mongoose.model("Listing", listingSchema);
+module.exports = Listing;
